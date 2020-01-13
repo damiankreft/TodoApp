@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="12202c8d-c51c-4e19-b96d-3c8f4bf4d6f1" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8000/TodoApp/DatabaseService/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Microsoft.ServiceModel.Samples.wsdl" MetadataType="Wsdl" ID="0a77a14d-2988-430a-9235-7d6f7bb97cee" SourceId="1" SourceUrl="http://localhost:8000/TodoApp/DatabaseService/mex" />
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="5e1c0e6a-27ee-49b1-a261-2959aacc82e6" SourceId="1" SourceUrl="http://localhost:8000/TodoApp/DatabaseService/mex" />
+    <MetadataFile FileName="Microsoft.ServiceModel.Samples.xsd" MetadataType="Schema" ID="cc6ab048-a5ca-463c-b854-c89a4fc0cca8" SourceId="1" SourceUrl="http://localhost:8000/TodoApp/DatabaseService/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="1ffa98b3-19c6-49e3-af10-8203a6db3dc0" SourceId="1" SourceUrl="http://localhost:8000/TodoApp/DatabaseService/mex" />
+    <MetadataFile FileName="DatabaseServiceLib.Models.xsd" MetadataType="Schema" ID="1ed16b96-2893-4e83-8c13-89d5a5a8d7b4" SourceId="1" SourceUrl="http://localhost:8000/TodoApp/DatabaseService/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
