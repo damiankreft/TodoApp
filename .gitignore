@@ -1,52 +1,30 @@
-# Prerequisites
-*.d
+/TodoApp.sln
 
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
+# Autosave files
+*~
+.vs/
 
-# Linker output
-*.ilk
-*.map
-*.exp
+# build
+[Oo]bj/
+[Bb]in/
 
-# Precompiled Headers
-*.gch
-*.pch
-
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
-
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+# globs
+Makefile.in
+*.DS_Store
+*.sln.cache
+*.suo
+*.cache
+*.pidb
+*.userprefs
+*.usertasks
+config.log
+config.make
+config.status
+aclocal.m4
+install-sh
+autom4te.cache/
+*.user
+*.tar.gz
+tarballs/
+test-results/
+Thumbs.db
