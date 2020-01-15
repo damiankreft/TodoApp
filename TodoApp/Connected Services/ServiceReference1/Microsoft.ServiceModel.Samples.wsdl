@@ -7,12 +7,6 @@
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/DatabaseServiceLib.Models" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IDatabase_Hello_InputMessage">
-    <wsdl:part name="parameters" element="tns:Hello" />
-  </wsdl:message>
-  <wsdl:message name="IDatabase_Hello_OutputMessage">
-    <wsdl:part name="parameters" element="tns:HelloResponse" />
-  </wsdl:message>
   <wsdl:message name="IDatabase_Save_InputMessage">
     <wsdl:part name="parameters" element="tns:Save" />
   </wsdl:message>
@@ -31,11 +25,19 @@
   <wsdl:message name="IDatabase_GetTodoItems_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetTodoItemsResponse" />
   </wsdl:message>
+  <wsdl:message name="IDatabase_GetTodoItem_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTodoItem" />
+  </wsdl:message>
+  <wsdl:message name="IDatabase_GetTodoItem_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTodoItemResponse" />
+  </wsdl:message>
+  <wsdl:message name="IDatabase_Hello_InputMessage">
+    <wsdl:part name="parameters" element="tns:Hello" />
+  </wsdl:message>
+  <wsdl:message name="IDatabase_Hello_OutputMessage">
+    <wsdl:part name="parameters" element="tns:HelloResponse" />
+  </wsdl:message>
   <wsdl:portType name="IDatabase">
-    <wsdl:operation name="Hello">
-      <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/IDatabase/Hello" message="tns:IDatabase_Hello_InputMessage" />
-      <wsdl:output wsaw:Action="http://Microsoft.ServiceModel.Samples/IDatabase/HelloResponse" message="tns:IDatabase_Hello_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="Save">
       <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/IDatabase/Save" message="tns:IDatabase_Save_InputMessage" />
       <wsdl:output wsaw:Action="http://Microsoft.ServiceModel.Samples/IDatabase/SaveResponse" message="tns:IDatabase_Save_OutputMessage" />
@@ -47,6 +49,14 @@
     <wsdl:operation name="GetTodoItems">
       <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/IDatabase/GetTodoItems" message="tns:IDatabase_GetTodoItems_InputMessage" />
       <wsdl:output wsaw:Action="http://Microsoft.ServiceModel.Samples/IDatabase/GetTodoItemsResponse" message="tns:IDatabase_GetTodoItems_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTodoItem">
+      <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/IDatabase/GetTodoItem" message="tns:IDatabase_GetTodoItem_InputMessage" />
+      <wsdl:output wsaw:Action="http://Microsoft.ServiceModel.Samples/IDatabase/GetTodoItemResponse" message="tns:IDatabase_GetTodoItem_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Hello">
+      <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/IDatabase/Hello" message="tns:IDatabase_Hello_InputMessage" />
+      <wsdl:output wsaw:Action="http://Microsoft.ServiceModel.Samples/IDatabase/HelloResponse" message="tns:IDatabase_Hello_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
 </wsdl:definitions>

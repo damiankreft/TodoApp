@@ -56,21 +56,35 @@ namespace TodoApp
             //    Console.WriteLine("Error code: {0};\n Error Message: {1};", dbExc.HResult, dbExc.Message);
             //}
 
-            /*
+            
             /// Service Client
-            ServiceReference1.DatabaseClient client = new DatabaseClient();
-            if(client.Hello() == "Hello, World!")
-                Console.WriteLine("Service reference works as intended.");
+            //ServiceReference1.DatabaseClient client = new DatabaseClient();
+            //if(client.Hello() == "Hello, World!")
+            //    Console.WriteLine("Service reference works as intended.");
 
-            var todoItems = client.GetTodoItems(1);
-            for(short i = 0; i < todoItems.Length; i++)
-            {
-                var id = todoItems[i].ItemId;
-                var name = todoItems[i].Name;
-                var description = todoItems[i].Description;
+            // Testing GetTodoItems(uint userId)
+            //var todoItems = client.GetTodoItems(1);
+            //for (short i = 0; i < todoItems.Length; i++)
+            //{
+            //    var id = todoItems[i].ItemId;
+            //    var name = todoItems[i].Name;
+            //    var description = todoItems[i].Description;
 
-                Console.WriteLine($"{id}. {name} - {description}");
-                */
+            //    Console.WriteLine($"Downloaded via service using GetTodoItems(userId:0):\n#{id}. {name} - {description}");
+            //    Console.WriteLine("Kutas");
+            //}
+
+
+            //// Testing GetTodoItem(uint itemId)
+            //Func<string> todoItem = () =>
+            //{
+            //    string name = client.GetTodoItem(0).Name;
+            //    uint id = client.GetTodoItem(0).ItemId;
+            //    string description = client.GetTodoItem(0).Description;
+            //    return $"Downloaded via service using GetTodoItem(itemId:0):\n #{id}. {name} - {description}";
+            //};
+
+            //Console.WriteLine(todoItem());
             #endregion
         }
     }

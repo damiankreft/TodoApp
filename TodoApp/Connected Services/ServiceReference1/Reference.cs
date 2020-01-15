@@ -94,12 +94,6 @@ namespace TodoApp.ServiceReference1 {
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://Microsoft.ServiceModel.Samples", ConfigurationName="ServiceReference1.IDatabase")]
     public interface IDatabase {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://Microsoft.ServiceModel.Samples/IDatabase/Hello", ReplyAction="http://Microsoft.ServiceModel.Samples/IDatabase/HelloResponse")]
-        string Hello();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://Microsoft.ServiceModel.Samples/IDatabase/Hello", ReplyAction="http://Microsoft.ServiceModel.Samples/IDatabase/HelloResponse")]
-        System.Threading.Tasks.Task<string> HelloAsync();
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://Microsoft.ServiceModel.Samples/IDatabase/Save", ReplyAction="http://Microsoft.ServiceModel.Samples/IDatabase/SaveResponse")]
         bool Save(TodoApp.ServiceReference1.TodoItemModel todoItem);
         
@@ -117,6 +111,18 @@ namespace TodoApp.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://Microsoft.ServiceModel.Samples/IDatabase/GetTodoItems", ReplyAction="http://Microsoft.ServiceModel.Samples/IDatabase/GetTodoItemsResponse")]
         System.Threading.Tasks.Task<TodoApp.ServiceReference1.TodoItemModel[]> GetTodoItemsAsync(uint userId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://Microsoft.ServiceModel.Samples/IDatabase/GetTodoItem", ReplyAction="http://Microsoft.ServiceModel.Samples/IDatabase/GetTodoItemResponse")]
+        TodoApp.ServiceReference1.TodoItemModel GetTodoItem(uint itemId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://Microsoft.ServiceModel.Samples/IDatabase/GetTodoItem", ReplyAction="http://Microsoft.ServiceModel.Samples/IDatabase/GetTodoItemResponse")]
+        System.Threading.Tasks.Task<TodoApp.ServiceReference1.TodoItemModel> GetTodoItemAsync(uint itemId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://Microsoft.ServiceModel.Samples/IDatabase/Hello", ReplyAction="http://Microsoft.ServiceModel.Samples/IDatabase/HelloResponse")]
+        string Hello();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://Microsoft.ServiceModel.Samples/IDatabase/Hello", ReplyAction="http://Microsoft.ServiceModel.Samples/IDatabase/HelloResponse")]
+        System.Threading.Tasks.Task<string> HelloAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -146,14 +152,6 @@ namespace TodoApp.ServiceReference1 {
                 base(binding, remoteAddress) {
         }
         
-        public string Hello() {
-            return base.Channel.Hello();
-        }
-        
-        public System.Threading.Tasks.Task<string> HelloAsync() {
-            return base.Channel.HelloAsync();
-        }
-        
         public bool Save(TodoApp.ServiceReference1.TodoItemModel todoItem) {
             return base.Channel.Save(todoItem);
         }
@@ -176,6 +174,22 @@ namespace TodoApp.ServiceReference1 {
         
         public System.Threading.Tasks.Task<TodoApp.ServiceReference1.TodoItemModel[]> GetTodoItemsAsync(uint userId) {
             return base.Channel.GetTodoItemsAsync(userId);
+        }
+        
+        public TodoApp.ServiceReference1.TodoItemModel GetTodoItem(uint itemId) {
+            return base.Channel.GetTodoItem(itemId);
+        }
+        
+        public System.Threading.Tasks.Task<TodoApp.ServiceReference1.TodoItemModel> GetTodoItemAsync(uint itemId) {
+            return base.Channel.GetTodoItemAsync(itemId);
+        }
+        
+        public string Hello() {
+            return base.Channel.Hello();
+        }
+        
+        public System.Threading.Tasks.Task<string> HelloAsync() {
+            return base.Channel.HelloAsync();
         }
     }
 }
