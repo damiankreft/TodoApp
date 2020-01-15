@@ -94,6 +94,12 @@ namespace TodoApp.ServiceReference1 {
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://Microsoft.ServiceModel.Samples", ConfigurationName="ServiceReference1.IDatabase")]
     public interface IDatabase {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://Microsoft.ServiceModel.Samples/IDatabase/Add", ReplyAction="http://Microsoft.ServiceModel.Samples/IDatabase/AddResponse")]
+        bool Add(TodoApp.ServiceReference1.TodoItemModel todoItem);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://Microsoft.ServiceModel.Samples/IDatabase/Add", ReplyAction="http://Microsoft.ServiceModel.Samples/IDatabase/AddResponse")]
+        System.Threading.Tasks.Task<bool> AddAsync(TodoApp.ServiceReference1.TodoItemModel todoItem);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://Microsoft.ServiceModel.Samples/IDatabase/Save", ReplyAction="http://Microsoft.ServiceModel.Samples/IDatabase/SaveResponse")]
         bool Save(TodoApp.ServiceReference1.TodoItemModel todoItem);
         
@@ -150,6 +156,14 @@ namespace TodoApp.ServiceReference1 {
         
         public DatabaseClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public bool Add(TodoApp.ServiceReference1.TodoItemModel todoItem) {
+            return base.Channel.Add(todoItem);
+        }
+        
+        public System.Threading.Tasks.Task<bool> AddAsync(TodoApp.ServiceReference1.TodoItemModel todoItem) {
+            return base.Channel.AddAsync(todoItem);
         }
         
         public bool Save(TodoApp.ServiceReference1.TodoItemModel todoItem) {

@@ -17,14 +17,47 @@ namespace DatabaseServiceLib
         private readonly string dbPath = Properties.Settings.Default.dbPath;
         public bool Save(TodoItemModel todoItem)
         {
+            throw new NotImplementedException();
+        }
+
+        // To implement
+        public bool Add(TodoItemModel todoItem)
+        {
             var dbConn = DbConnection.Instance();
             dbConn.DatabaseName = "taskapp";
+            string title = todoItem.Name;
+            string description = todoItem.Description;
 
             if (dbConn.IsConnect())
             {
-                
+                string query = String.Format("INSERT INTO tasks(Title, Description, UserId) VALUES('{0}', '{1}', 0);", title, description);
+                var cmd = new MySqlCommand(query, dbConn.Connection);
+                if (cmd.ExecuteNonQuery() > 0)
+                {
+                    return true;
+                }
+                dbConn.Close();
             }
+            return false;
+        }
 
+        public bool Update(TodoItemModel todoItem)
+        {
+            var dbConn = DbConnection.Instance();
+            dbConn.DatabaseName = "taskapp";
+            string title = todoItem.Name;
+            string description = todoItem.Description;
+
+            if (dbConn.IsConnect())
+            {
+                string query = $"INSERT INTO tasks(Title, Description, UserId VALUES({title}, {description}, 0)";
+                var cmd = new MySqlCommand(query, dbConn.Connection);
+                if (cmd.ExecuteNonQuery() > 0)
+                {
+                    return true;
+                }
+                dbConn.Close();
+            }
             return false;
         }
 

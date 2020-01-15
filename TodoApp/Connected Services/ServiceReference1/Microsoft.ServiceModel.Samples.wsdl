@@ -7,6 +7,12 @@
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/DatabaseServiceLib.Models" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IDatabase_Add_InputMessage">
+    <wsdl:part name="parameters" element="tns:Add" />
+  </wsdl:message>
+  <wsdl:message name="IDatabase_Add_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddResponse" />
+  </wsdl:message>
   <wsdl:message name="IDatabase_Save_InputMessage">
     <wsdl:part name="parameters" element="tns:Save" />
   </wsdl:message>
@@ -38,6 +44,10 @@
     <wsdl:part name="parameters" element="tns:HelloResponse" />
   </wsdl:message>
   <wsdl:portType name="IDatabase">
+    <wsdl:operation name="Add">
+      <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/IDatabase/Add" message="tns:IDatabase_Add_InputMessage" />
+      <wsdl:output wsaw:Action="http://Microsoft.ServiceModel.Samples/IDatabase/AddResponse" message="tns:IDatabase_Add_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="Save">
       <wsdl:input wsaw:Action="http://Microsoft.ServiceModel.Samples/IDatabase/Save" message="tns:IDatabase_Save_InputMessage" />
       <wsdl:output wsaw:Action="http://Microsoft.ServiceModel.Samples/IDatabase/SaveResponse" message="tns:IDatabase_Save_OutputMessage" />

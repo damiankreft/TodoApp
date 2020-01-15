@@ -14,6 +14,8 @@ namespace DatabaseServiceLib
         //[OperationContract]
         //string Hello();
         [OperationContract]
+        bool Add(TodoItemModel todoItem);
+        [OperationContract]
         bool Save(TodoItemModel todoItem);
         [OperationContract]
         bool Delete(uint itemId);

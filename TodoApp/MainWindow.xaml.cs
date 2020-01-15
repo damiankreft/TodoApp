@@ -56,7 +56,7 @@ namespace TodoApp
             //    Console.WriteLine("Error code: {0};\n Error Message: {1};", dbExc.HResult, dbExc.Message);
             //}
 
-            
+
             /// Service Client
             //ServiceReference1.DatabaseClient client = new DatabaseClient();
             //if(client.Hello() == "Hello, World!")
@@ -85,6 +85,12 @@ namespace TodoApp
             //};
 
             //Console.WriteLine(todoItem());
+
+            DatabaseClient client = new DatabaseClient();
+            client.Add(new TodoItemModel() { Description = "OpisZadania", Name = "TytulZadania" });
+            if (client.GetTodoItems(0).Length > 1)
+                Console.WriteLine("Add method works as intended");
+
             #endregion
         }
     }
