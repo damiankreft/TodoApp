@@ -11,13 +11,17 @@ namespace DatabaseServiceLib
     [ServiceContract(Namespace = "http://Microsoft.ServiceModel.Samples")]
     public interface IDatabase
     {
-        [OperationContract]
-        string Hello();
+        //[OperationContract]
+        //string Hello();
         [OperationContract]
         bool Save(TodoItemModel todoItem);
         [OperationContract]
         bool Delete(uint itemId);
         [OperationContract]
         List<TodoItemModel> GetTodoItems(uint userId);
+        [OperationContract]
+        TodoItemModel GetTodoItem(uint itemId);
+        [OperationContract]
+        string Hello();
     }
 }
