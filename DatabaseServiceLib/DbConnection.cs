@@ -10,6 +10,7 @@ namespace DatabaseServiceLib
 {
     class DbConnection
     {
+        private readonly string dbPath = Properties.Settings.Default.dbPath;
         private DbConnection()
         {
 
@@ -55,13 +56,21 @@ namespace DatabaseServiceLib
                 {
                     return false;
                 }
-                string dbPath = DatabaseServiceLib.Properties.Settings.Default.dbPath;
+
                 // Added semicolon to end last parameter of dbPath string and add an another one.
-                /*string connString = string.Format(dbPath + ";database={0}", databaseName);*/
-                // database path requires fix. Original code used to cause a crash of the service
-                string connString = "Server=localhost;Database=taskapp;Uid=root";
-                connection = new MySqlConnection(connString);
-                connection.Open();
+                string connString = $"{dbPath};Database={DatabaseName};";
+
+                // Below comment exists only for test purposes
+                //string connString = "Server=localhost;Database=taskapp;Uid=root";
+                try
+                {
+                    connection = new MySqlConnection(connString);
+                    connection.Open();
+                }
+                catch(MySqlException exc)
+                {
+                    Console.WriteLine(exc.Code + "\n" + exc.Message);
+                }
             }
 
             return true;

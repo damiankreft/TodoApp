@@ -14,7 +14,7 @@ namespace DatabaseServiceLib
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
     public class DatabaseService : IDatabase
     {
-        private readonly string dbPath = Properties.Settings.Default.dbPath;
+        //private readonly string dbPath = Properties.Settings.Default.dbPath;
         public bool Save(TodoItemModel todoItem)
         {
             throw new NotImplementedException();
@@ -50,10 +50,11 @@ namespace DatabaseServiceLib
 
             if (dbConn.IsConnect())
             {
-                string query = $"INSERT INTO tasks(Title, Description, UserId VALUES({title}, {description}, 0)";
+                string query = String.Format("INSERT INTO tasks(Title, Description, UserId) VALUES('{0}', '{1}', 0);", title, description);
                 var cmd = new MySqlCommand(query, dbConn.Connection);
                 if (cmd.ExecuteNonQuery() > 0)
                 {
+
                     return true;
                 }
                 dbConn.Close();
@@ -100,8 +101,8 @@ namespace DatabaseServiceLib
 
             if (dbConn.IsConnect())
             {
-                
-                string query = $"SELECT * FROM tasks WHERE TaskId={itemId}";
+                // Throws exception when trying to select by non-existing TaskId (WHERE TaskId=1;)
+                string query = "SELECT * FROM tasks WHERE TaskId IN (1)";
                 var cmd = new MySqlCommand(query, dbConn.Connection);
                 var reader = cmd.ExecuteReader();
                 reader.Read();
