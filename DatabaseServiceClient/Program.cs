@@ -17,6 +17,9 @@ namespace DatabaseServiceClient
             // Step 2: Call the service operations.
             // Call the Hello service option.
             Console.WriteLine(client.Hello());
+            var returnedItem = client.GetTodoItem(1);
+            Console.WriteLine($"We did it! Cast works properly.\n #{returnedItem.ItemId} {returnedItem.Name} - {returnedItem.Description}");
+
 
             // Step 3: Close the client to gracefully close the connection and clean up resources.
             Console.WriteLine("\nPress <Enter> to terminate the client.");

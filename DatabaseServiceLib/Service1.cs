@@ -64,7 +64,20 @@ namespace DatabaseServiceLib
 
         public bool Delete(uint itemId)
         {
-            throw new NotImplementedException();
+            var dbConn = DbConnection.Instance();
+            dbConn.DatabaseName = "taskapp";
+
+            if (dbConn.IsConnect())
+            {
+                string query = String.Format("DELETE FROM tasks WHERE TaskId={0}", itemId);
+                var cmd = new MySqlCommand(query, dbConn.Connection);
+                if (cmd.ExecuteNonQuery() > 0)
+                {
+                    dbConn.Close();
+                    return true;
+                }
+            }
+            return false;
         }
 
         public List<TodoItemModel> GetTodoItems(uint userId)
@@ -101,16 +114,15 @@ namespace DatabaseServiceLib
 
             if (dbConn.IsConnect())
             {
-                // Throws exception when trying to select by non-existing TaskId (WHERE TaskId=1;)
-                string query = "SELECT * FROM tasks WHERE TaskId IN (1)";
+                string query = $"SELECT * FROM tasks WHERE TaskId={itemId};";
                 var cmd = new MySqlCommand(query, dbConn.Connection);
                 var reader = cmd.ExecuteReader();
-                reader.Read();
-                returnedItem.ItemId = UInt32.Parse(reader[0].ToString());
-                returnedItem.Name = reader[1].ToString();
-                returnedItem.Description = reader[2].ToString();
-
-                Console.WriteLine($"We did it! Cast works properly.\n #{returnedItem.ItemId} {returnedItem.Name} - {returnedItem.Description}");
+                while(reader.Read())
+                {
+                    returnedItem.ItemId = reader.GetUInt32(0);
+                    returnedItem.Name = reader.GetString(1);
+                    returnedItem.Description = reader.GetString(2);
+                }
                 reader.Close();
             }
 
