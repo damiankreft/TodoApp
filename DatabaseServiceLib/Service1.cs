@@ -15,13 +15,30 @@ namespace DatabaseServiceLib
     public class DatabaseService : IDatabase
     {
         //private readonly string dbPath = Properties.Settings.Default.dbPath;
+
+
+        /// <summary>
+        /// Inserts or updates table depending on existence of the item with TaskId passsed as parameter. Returns result of Update(TodoItemModel) if item doesn't exist, otherwise returns result of Add(TodoItemModel).
+        /// </summary>
+        /// <param name="todoItem"></param>
+        /// <returns></returns>
         public bool Save(TodoItemModel todoItem)
         {
-            throw new NotImplementedException();
+            var dbCon = DbConnection.Instance();
+
+            var item = GetTodoItems(0).Where(i => i.ItemId == todoItem.ItemId).ToList<TodoItemModel>();
+
+            if (item.Count > 0)
+            {
+                return Update(todoItem);
+            }
+            else
+            {
+                return Add(todoItem);
+            }
         }
 
-        // To implement
-        public bool Add(TodoItemModel todoItem)
+        private bool Add(TodoItemModel todoItem)
         {
             var dbConn = DbConnection.Instance();
             dbConn.DatabaseName = "taskapp";
@@ -41,7 +58,12 @@ namespace DatabaseServiceLib
             return false;
         }
 
-        public bool Update(TodoItemModel todoItem)
+        /// <summary>
+        /// Overwrites row with parameters set in the paremeter passed to method.
+        /// Returns true if Update affected any rows.
+        /// </summary>
+        /// <param name="todoItem"></param>
+        private bool Update(TodoItemModel todoItem)
         {
             var dbConn = DbConnection.Instance();
             dbConn.DatabaseName = "taskapp";
@@ -50,11 +72,11 @@ namespace DatabaseServiceLib
 
             if (dbConn.IsConnect())
             {
-                string query = String.Format("INSERT INTO tasks(Title, Description, UserId) VALUES('{0}', '{1}', 0);", title, description);
+                //string query = String.Format("INSERT INTO tasks(Title, Description, UserId) VALUES('{0}', '{1}', 0);", title, description);
+                string query = String.Format("UPDATE `tasks` SET `Title`='{0}' , `Description`='{1}' WHERE `TaskId`={2}", todoItem.Name, todoItem.Description, todoItem.ItemId);
                 var cmd = new MySqlCommand(query, dbConn.Connection);
                 if (cmd.ExecuteNonQuery() > 0)
                 {
-
                     return true;
                 }
                 dbConn.Close();

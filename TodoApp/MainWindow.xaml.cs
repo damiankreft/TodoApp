@@ -67,7 +67,13 @@ namespace TodoApp
                 string description = client.GetTodoItem(0).Description;
                 return $"Downloaded via service using GetTodoItem(itemId:0):\n #{id}. {name} - {description}";
             };
+
+            Func<bool> SaveTest = () =>
+            {
+                return (client.Save(new TodoItemModel() { ItemId = 2, Name = "SaveTest", Description = "SaveTest description" }));
+            };
             Console.WriteLine(todoItem());
+            Console.WriteLine($"Does it work? {SaveTest()}");
             #endregion
             #endregion
         }
